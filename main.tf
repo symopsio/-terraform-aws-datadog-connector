@@ -3,7 +3,7 @@ locals {
 }
 
 module "kinesis_firehose_connector" {
-  source = "symopsio/kinesis-firehose-connector/sym"
+  source = "symopsio/kinesis-firehose-connector/aws"
   version = ">= 3.0.0, < 4.0.0"
 
   environment = var.environment
