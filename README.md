@@ -10,7 +10,7 @@ SECURITY NOTE: The `datadog_access_key` variable is [sensitive](https://learn.ha
 
 ```hcl
 module "datadog_connector" {
-  source  = "symopsio/datadog-connector/sym"
+  source  = "symopsio/datadog-connector/aws"
   version = ">= 2.0.0"
 
   environment = "sandbox"
