@@ -49,10 +49,13 @@ module "datadog_connector" {
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_buffering_interval"></a> [buffering\_interval](#input\_buffering\_interval) | Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination. | `number` | `300` | no |
+| <a name="input_buffering_size"></a> [buffering\_size](#input\_buffering\_size) | Buffer incoming data to the specified size, in MBs, before delivering it to the destination. | `number` | `5` | no |
 | <a name="input_datadog_access_key"></a> [datadog\_access\_key](#input\_datadog\_access\_key) | Secret used by the Firehose to send logs to Datadog. DO NOT check this into version control. | `string` | n/a | yes |
 | <a name="input_datadog_intake_url"></a> [datadog\_intake\_url](#input\_datadog\_intake\_url) | Intake url for Datadog to consume Kinesis Firehose messages. For EU Datadog, set to 'https://aws-kinesis-http-intake.logs.datadoghq.eu/v1/input'. | `string` | `"https://aws-kinesis-http-intake.logs.datadoghq.com/v1/input"` | no |
 | <a name="input_environment"></a> [environment](#input\_environment) | An environment qualifier for the resources this module creates, to support a Terraform SDLC. | `string` | n/a | yes |
 | <a name="input_name_prefix"></a> [name\_prefix](#input\_name\_prefix) | A prefix for the Firehose and dependency names | `string` | `""` | no |
+| <a name="input_retry_duration"></a> [retry\_duration](#input\_retry\_duration) | Total amount of seconds Firehose spends on retries. This duration starts after the initial attempt fails, and does not include the time periods during which Firehose waits for acknowledgment from the specified destination after each attempt. Valid values are between 0 and 7200. | `number` | `300` | no |
 | <a name="input_tags"></a> [tags](#input\_tags) | Additional tags to apply to resources. | `map(string)` | `{}` | no |
 
 ## Outputs
