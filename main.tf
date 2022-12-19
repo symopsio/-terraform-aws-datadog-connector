@@ -3,7 +3,7 @@ locals {
 }
 
 module "kinesis_firehose_connector" {
-  source = "symopsio/kinesis-firehose-connector/aws"
+  source  = "symopsio/kinesis-firehose-connector/aws"
   version = ">= 3.0.0, < 4.0.0"
 
   environment = var.environment
@@ -21,12 +21,12 @@ resource "aws_kinesis_firehose_delivery_stream" "this" {
   }
 
   http_endpoint_configuration {
-    url        = var.datadog_intake_url
-    name       = "Datadog"
-    access_key = var.datadog_access_key
-    role_arn   = module.kinesis_firehose_connector.firehose_role_arn
-    retry_duration = var.retry_duration
-    buffering_size = var.buffering_size
+    url                = var.datadog_intake_url
+    name               = "Datadog"
+    access_key         = var.datadog_access_key
+    role_arn           = module.kinesis_firehose_connector.firehose_role_arn
+    retry_duration     = var.retry_duration
+    buffering_size     = var.buffering_size
     buffering_interval = var.buffering_interval
 
     request_configuration {
