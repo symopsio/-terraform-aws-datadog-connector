@@ -26,3 +26,21 @@ variable "name_prefix" {
   type        = string
   default     = ""
 }
+
+variable "retry_duration" {
+  description = "Total amount of seconds Firehose spends on retries. This duration starts after the initial attempt fails, and does not include the time periods during which Firehose waits for acknowledgment from the specified destination after each attempt. Valid values are between 0 and 7200."
+  type        = number
+  default     = 300
+}
+
+variable "buffering_size" {
+  description = "Buffer incoming data to the specified size, in MBs, before delivering it to the destination."
+  type        = number
+  default     = 5
+}
+
+variable "buffering_interval" {
+  description = "Buffer incoming data for the specified period of time, in seconds, before delivering it to the destination."
+  type        = number
+  default     = 300
+}

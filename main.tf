@@ -25,6 +25,9 @@ resource "aws_kinesis_firehose_delivery_stream" "this" {
     name       = "Datadog"
     access_key = var.datadog_access_key
     role_arn   = module.kinesis_firehose_connector.firehose_role_arn
+    retry_duration = var.retry_duration
+    buffering_size = var.buffering_size
+    buffering_interval = var.buffering_interval
 
     request_configuration {
       content_encoding = "GZIP"
