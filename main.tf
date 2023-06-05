@@ -15,11 +15,6 @@ resource "aws_kinesis_firehose_delivery_stream" "this" {
   name        = "${var.name_prefix}SymDatadogFirehose${title(var.environment)}"
   destination = "http_endpoint"
 
-  s3_configuration {
-    role_arn   = module.kinesis_firehose_connector.firehose_role_arn
-    bucket_arn = module.kinesis_firehose_connector.firehose_bucket_arn
-  }
-
   http_endpoint_configuration {
     url                = var.datadog_intake_url
     name               = "Datadog"
@@ -28,6 +23,11 @@ resource "aws_kinesis_firehose_delivery_stream" "this" {
     retry_duration     = var.retry_duration
     buffering_size     = var.buffering_size
     buffering_interval = var.buffering_interval
+
+    s3_configuration {
+      role_arn   = module.kinesis_firehose_connector.firehose_role_arn
+      bucket_arn = module.kinesis_firehose_connector.firehose_bucket_arn
+    }
 
     request_configuration {
       content_encoding = "GZIP"
